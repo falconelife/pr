@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - Олексій Коваленко</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="about.html" class="nav-link">Про мене</a></li>
+                    <li><a href="projects.html" class="nav-link">Проєкти</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="blog.html" class="nav-link active">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Мій блог</h1>
+            <p>Думки про веб-розробку та технології</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="../img/blog1.jpg" alt="React 18 нові можливості">
+                        <div class="blog-category">React</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">15 вересня 2025</span>
+                            <span class="blog-read-time">5 хв читання</span>
+                        </div>
+                        <h2 class="blog-title">
+                            <a href="#" onclick="openBlogPost('react18')">React 18: Нові можливості та покращення</a>
+                        </h2>
+                        <p class="blog-excerpt">
+                            Огляд нових функцій React 18, включаючи Concurrent Features, 
+                            Suspense покращення та нову архітектуру рендерингу.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Frontend</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="../img/blog2.jpg" alt="CSS Grid Layout">
+                        <div class="blog-category">CSS</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">8 вересня 2025</span>
+                            <span class="blog-read-time">7 хв читання</span>
+                        </div>
+                        <h2 class="blog-title">
+                            <a href="#" onclick="openBlogPost('css-grid')">Майстерність CSS Grid: Від основ до експертного рівня</a>
+                        </h2>
+                        <p class="blog-excerpt">
+                            Повний гід по CSS Grid Layout з практичними прикладами 
+                            та порадами для створення сучасних макетів.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">CSS</span>
+                            <span class="tag">Layout</span>
+                            <span class="tag">Design</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="../img/blog3.jpg" alt="Node.js Performance">
+                        <div class="blog-category">Backend</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2 вересня 2025</span>
+                            <span class="blog-read-time">10 хв читання</span>
+                        </div>
+                        <h2 class="blog-title">
+                            <a href="#" onclick="openBlogPost('nodejs-performance')">Оптимізація продуктивності Node.js додатків</a>
+                        </h2>
+                        <p class="blog-excerpt">
+                            Техніки та інструменти для підвищення продуктивності 
+                            Node.js застосунків: від профілювання до кешування.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Performance</span>
+                            <span class="tag">Backend</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="../img/blog4.jpg" alt="TypeScript Tips">
+                        <div class="blog-category">TypeScript</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">25 серпня 2025</span>
+                            <span class="blog-read-time">6 хв читання</span>
+                        </div>
+                        <h2 class="blog-title">
+                            <a href="#" onclick="openBlogPost('typescript-tips')">10 корисних TypeScript тріків для розробників</a>
+                        </h2>
+                        <p class="blog-excerpt">
+                            Колекція корисних TypeScript функцій та патернів, 
+                            які допоможуть писати більш безпечний та читабельний код.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Tips</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="pagination-btn disabled">&larr; Попередня</a>
+                <div class="pagination-numbers">
+                    <a href="#" class="pagination-number active">1</a>
+                    <a href="#" class="pagination-number">2</a>
+                    <a href="#" class="pagination-number">3</a>
+                </div>
+                <a href="#" class="pagination-btn">Наступна &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Modal -->
+    <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-content">
+            <span class="blog-modal-close" onclick="closeBlogPost()">&times;</span>
+            <div id="blogModalContent">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../index.html">Головна</a></li>
+                        <li><a href="about.html">Про мене</a></li>
+                        <li><a href="projects.html">Проєкти</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

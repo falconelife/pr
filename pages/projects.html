@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проєкти - Олексій Коваленко</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="about.html" class="nav-link">Про мене</a></li>
+                    <li><a href="projects.html" class="nav-link active">Проєкти</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="blog.html" class="nav-link">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Мої проєкти</h1>
+            <p>Колекція робіт, над якими я працював</p>
+        </div>
+    </section>
+
+    <!-- Projects Filter -->
+    <section class="projects-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Всі проєкти</button>
+                <button class="filter-btn" data-filter="web">Веб-сайти</button>
+                <button class="filter-btn" data-filter="app">Застосунки</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="project-card-detailed" data-category="ecommerce">
+                    <div class="project-image-container">
+                        <img src="../img/project1.jpg" alt="ShopMaster E-commerce" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Подивитися проєкт">👁️</a>
+                                <a href="#" class="project-link" aria-label="Код на GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ShopMaster E-commerce</h3>
+                        <p class="project-description">
+                            Повноцінна платформа електронної комерції з адміністративною панеллю, 
+                            системою платежів і управлінням замовленнями. Підтримує кілька валют 
+                            і мов інтерфейсу.
+                        </p>
+                        <div class="project-features">
+                            <h4>Основні функції:</h4>
+                            <ul>
+                                <li>Каталог товарів з фільтрацією</li>
+                                <li>Кошик і система замовлень</li>
+                                <li>Інтеграція з платіжними системами</li>
+                                <li>Адміністративна панель</li>
+                                <li>Мобільна версія</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Redux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card-detailed" data-category="app">
+                    <div class="project-image-container">
+                        <img src="../img/project2.jpg" alt="TaskFlow Mobile App" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Подивитися проєкт">👁️</a>
+                                <a href="#" class="project-link" aria-label="Код на GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TaskFlow Mobile App</h3>
+                        <p class="project-description">
+                            Крос-платформний мобільний додаток для управління задачами з 
+                            синхронізацією в реальному часі, нагадуваннями і командною роботою.
+                        </p>
+                        <div class="project-features">
+                            <h4>Основні функції:</h4>
+                            <ul>
+                                <li>Створення і управління задачами</li>
+                                <li>Календарна інтеграція</li>
+                                <li>Push-нотифікації</li>
+                                <li>Командна робота</li>
+                                <li>Офлайн режим</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">AsyncStorage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card-detailed" data-category="web">
+                    <div class="project-image-container">
+                        <img src="../img/project3.jpg" alt="TechCorp Corporate Website" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Подивитися проєкт">👁️</a>
+                                <a href="#" class="project-link" aria-label="Код на GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TechCorp Corporate Website</h3>
+                        <p class="project-description">
+                            Сучасний корпоративний сайт для IT-компанії з системою управління 
+                            контентом, блогом і формами зворотного зв'язку.
+                        </p>
+                        <div class="project-features">
+                            <h4>Основні функції:</h4>
+                            <ul>
+                                <li>Адаптивний дизайн</li>
+                                <li>CMS для контенту</li>
+                                <li>SEO оптимізація</li>
+                                <li>Мультимовність</li>
+                                <li>Інтеграція з CRM</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Nuxt.js</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">SCSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card-detailed" data-category="app">
+                    <div class="project-image-container">
+                        <img src="../img/project4.jpg" alt="WeatherPro Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Подивитися проєкт">👁️</a>
+                                <a href="#" class="project-link" aria-label="Код на GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">WeatherPro Dashboard</h3>
+                        <p class="project-description">
+                            Інтерактивна панель управління погодними даними з візуалізацією, 
+                            прогнозами і геолокацією для метеорологічних служб.
+                        </p>
+                        <div class="project-features">
+                            <h4>Основні функції:</h4>
+                            <ul>
+                                <li>Реалтайм дані про погоду</li>
+                                <li>Інтерактивні карти</li>
+                                <li>Графіки і аналітика</li>
+                                <li>Експорт даних</li>
+                                <li>API інтеграція</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card-detailed" data-category="web">
+                    <div class="project-image-container">
+                        <img src="../img/project5.jpg" alt="Portfolio CMS" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Подивитися проєкт">👁️</a>
+                                <a href="#" class="project-link" aria-label="Код на GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio CMS</h3>
+                        <p class="project-description">
+                            Система управління контентом для створення портфоліо з шаблонами, 
+                            галереєю робіт і інтеграцією з соціальними мережами.
+                        </p>
+                        <div class="project-features">
+                            <h4>Основні функції:</h4>
+                            <ul>
+                                <li>Редактор WYSIWYG</li>
+                                <li>Завантаження медіа</li>
+                                <li>Готові шаблони</li>
+                                <li>SEO інструменти</li>
+                                <li>Аналітика відвідувань</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../index.html">Головна</a></li>
+                        <li><a href="about.html">Про мене</a></li>
+                        <li><a href="projects.html">Проєкти</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

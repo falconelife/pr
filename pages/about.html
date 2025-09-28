@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про мене - Олексій Коваленко</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="about.html" class="nav-link active">Про мене</a></li>
+                    <li><a href="projects.html" class="nav-link">Проєкти</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="blog.html" class="nav-link">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Про мене</h1>
+            <p>Дізнайтеся більше про мій досвід і навички</p>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section class="biography">
+        <div class="container">
+            <div class="bio-content">
+                <div class="bio-text">
+                    <h2>Моя історія</h2>
+                    <p>
+                        Привіт! Мене звати Олексій Коваленко, і я Full-Stack веб-розробник з понад 5 роками досвіду. 
+                        Моя подорож у світі програмування почалася в університеті, де я вивчав комп'ютерні науки.
+                    </p>
+                    <p>
+                        За час своєї кар'єри я працював над різноманітними проєктами — від невеликих корпоративних 
+                        сайтів до великих e-commerce платформ. Мене захоплює створення інтуїтивних користувальських 
+                        інтерфейсів і надійних серверних рішень.
+                    </p>
+                    <p>
+                        Постійно навчаюся новим технологіям і підходам в розробці, адже IT-сфера розвивається 
+                        надшвидкими темпами. Вважаю, що хороший код — це не тільки працюючий код, 
+                        а й зрозумілий, підтримуваний і масштабований.
+                    </p>
+                </div>
+                <div class="bio-image">
+                    <img src="../img/about-me.jpg" alt="Олексій за роботою" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="container">
+            <h2 class="section-title">Освіта</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2016-2020</div>
+                    <div class="timeline-content">
+                        <h3>Бакалавр комп'ютерних наук</h3>
+                        <p>Київський національний університет імені Тараса Шевченка</p>
+                        <p>Спеціальність: Програмна інженерія</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020-2022</div>
+                    <div class="timeline-content">
+                        <h3>Магістр інформаційних технологій</h3>
+                        <p>Київський національний університет імені Тараса Шевченка</p>
+                        <p>Спеціальність: Веб-технології та інтернет-програмування</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <h2 class="section-title">Технічні навички</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Frontend Technologies</h3>
+                    <table class="skills-table">
+                        <thead>
+                            <tr>
+                                <th>Технологія</th>
+                                <th>Рівень</th>
+                                <th>Досвід (роки)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML5/CSS3</td>
+                                <td><span class="skill-level expert">Експерт</span></td>
+                                <td>5+</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript (ES6+)</td>
+                                <td><span class="skill-level expert">Експерт</span></td>
+                                <td>5+</td>
+                            </tr>
+                            <tr>
+                                <td>React.js</td>
+                                <td><span class="skill-level advanced">Досвідчений</span></td>
+                                <td>3+</td>
+                            </tr>
+                            <tr>
+                                <td>Vue.js</td>
+                                <td><span class="skill-level advanced">Досвідчений</span></td>
+                                <td>2+</td>
+                            </tr>
+                            <tr>
+                                <td>TypeScript</td>
+                                <td><span class="skill-level intermediate">Середній</span></td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Backend Technologies</h3>
+                    <table class="skills-table">
+                        <thead>
+                            <tr>
+                                <th>Технологія</th>
+                                <th>Рівень</th>
+                                <th>Досвід (роки)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Node.js</td>
+                                <td><span class="skill-level expert">Експерт</span></td>
+                                <td>4+</td>
+                            </tr>
+                            <tr>
+                                <td>PHP</td>
+                                <td><span class="skill-level advanced">Досвідчений</span></td>
+                                <td>3+</td>
+                            </tr>
+                            <tr>
+                                <td>Python</td>
+                                <td><span class="skill-level intermediate">Середній</span></td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>MySQL</td>
+                                <td><span class="skill-level advanced">Досвідчений</span></td>
+                                <td>4+</td>
+                            </tr>
+                            <tr>
+                                <td>MongoDB</td>
+                                <td><span class="skill-level intermediate">Середній</span></td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section class="hobbies">
+        <div class="container">
+            <h2 class="section-title">Хобі та інтереси</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-icon">📸</div>
+                    <h3>Фотографія</h3>
+                    <p>Захоплююся фотографуванням природи та архітектури. Це допомагає розвивати креативність і око для деталей.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🎵</div>
+                    <h3>Музика</h3>
+                    <p>Граю на гітарі та фортепіано. Музика допомагає розслабитися після довгого дня кодування.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🏔️</div>
+                    <h3>Походи</h3>
+                    <p>Люблю активний відпочинок на природі. Походи в гори дають можливість відключитися від технологій.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">📚</div>
+                    <h3>Читання</h3>
+                    <p>Читаю книги з програмування, психології та філософії. Знання — це найкраща інвестиція.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Facts -->
+    <section class="fun-facts">
+        <div class="container">
+            <h2 class="section-title">Цікаві факти про мене</h2>
+            <div class="facts-list">
+                <ul>
+                    <li>🚀 Написав свій перший сайт у 14 років</li>
+                    <li>☕ Випиваю близько 4 чашок кави на день</li>
+                    <li>🌍 Відвідав 12 країн і мрію про подорожі</li>
+                    <li>🎮 Люблю інді-ігри та головоломки</li>
+                    <li>🧘 Практикую медитацію вже 3 роки</li>
+                    <li>📱 Маю власний YouTube канал про веб-розробку</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../index.html">Головна</a></li>
+                        <li><a href="about.html">Про мене</a></li>
+                        <li><a href="projects.html">Проєкти</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
