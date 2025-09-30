@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блог - Олексій Коваленко</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог - Олексій Коваленко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -60,7 +60,7 @@
                             <span class="blog-read-time">5 хв читання</span>
                         </div>
                         <h2 class="blog-title">
-                            <a href="#" onclick="openBlogPost('react18')">React 18: Нові можливості та покращення</a>
+                            <a href="blog-posts/react-18-features.html">React 18: Нові можливості та покращення</a>
                         </h2>
                         <p class="blog-excerpt">
                             Огляд нових функцій React 18, включаючи Concurrent Features, 
@@ -86,7 +86,7 @@
                             <span class="blog-read-time">7 хв читання</span>
                         </div>
                         <h2 class="blog-title">
-                            <a href="#" onclick="openBlogPost('css-grid')">Майстерність CSS Grid: Від основ до експертного рівня</a>
+                            <a href="blog-posts/css-grid-mastery.html">Майстерність CSS Grid: Від основ до експертного рівня</a>
                         </h2>
                         <p class="blog-excerpt">
                             Повний гід по CSS Grid Layout з практичними прикладами 
@@ -112,7 +112,7 @@
                             <span class="blog-read-time">10 хв читання</span>
                         </div>
                         <h2 class="blog-title">
-                            <a href="#" onclick="openBlogPost('nodejs-performance')">Оптимізація продуктивності Node.js додатків</a>
+                            <a href="blog-posts/nodejs-performance.html">Оптимізація продуктивності Node.js додатків</a>
                         </h2>
                         <p class="blog-excerpt">
                             Техніки та інструменти для підвищення продуктивності 
@@ -138,7 +138,7 @@
                             <span class="blog-read-time">6 хв читання</span>
                         </div>
                         <h2 class="blog-title">
-                            <a href="#" onclick="openBlogPost('typescript-tips')">10 корисних TypeScript тріків для розробників</a>
+                            <a href="blog-posts/typescript-tips.html">10 корисних TypeScript тріків для розробників</a>
                         </h2>
                         <p class="blog-excerpt">
                             Колекція корисних TypeScript функцій та патернів, 
@@ -165,16 +165,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Blog Post Modal -->
-    <div class="blog-modal" id="blogModal">
-        <div class="blog-modal-content">
-            <span class="blog-modal-close" onclick="closeBlogPost()">&times;</span>
-            <div id="blogModalContent">
-                <!-- Content will be loaded here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
