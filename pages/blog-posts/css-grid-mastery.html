@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Майстерність CSS Grid: Від основ до експертного рівня - Олексій Коваленко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="../about.html" class="nav-link">Про мене</a></li>
+                    <li><a href="../projects.html" class="nav-link">Проєкти</a></li>
+                    <li><a href="../contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="../blog.html" class="nav-link active">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta">
+                <span class="article-category">CSS</span>
+                <span class="article-date">8 вересня 2025</span>
+                <span class="article-read-time">7 хв читання</span>
+            </div>
+            <h1 class="article-title">Майстерність CSS Grid: Від основ до експертного рівня</h1>
+            <p class="article-subtitle">Повний гід по CSS Grid Layout з практичними прикладами та порадами для створення сучасних макетів</p>
+            <div class="article-tags">
+                <span class="tag">CSS</span>
+                <span class="tag">Layout</span>
+                <span class="tag">Design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="container">
+            <div class="article-body">
+                <img src="../../img/blog2.jpg" alt="CSS Grid Layout" class="article-image">
+
+                <h2>Що таке CSS Grid?</h2>
+                <p>CSS Grid Layout — це двовимірна система макетування, яка дозволяє створювати складні веб-макети з легкістю. На відміну від Flexbox, який є одновимірним, Grid працює як з рядками, так і з колонками одночасно.</p>
+
+                <h2>Основні концепції Grid</h2>
+                <h3>Grid Container та Grid Items</h3>
+                <p>Початок роботи з Grid починається з визначення контейнера:</p>
+
+                <pre><code>
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px 100px;
+  gap: 20px;
+}
+                </code></pre>
+
+                <h3>Grid Lines та Grid Tracks</h3>
+                <p>Grid Lines — це лінії, які утворюють структуру сітки. Grid Tracks — це простір між двома сусідніми лініями.</p>
+
+                <h2>Властивості Grid Container</h2>
+                <h3>grid-template-columns та grid-template-rows</h3>
+                <p>Визначають розміри колонок та рядків:</p>
+
+                <pre><code>
+.grid {
+  display: grid;
+
+  /* Фіксовані розміри */
+  grid-template-columns: 200px 300px 100px;
+
+  /* Гнучкі розміри */
+  grid-template-columns: 1fr 2fr 1fr;
+
+  /* Змішані розміри */
+  grid-template-columns: 200px 1fr 100px;
+
+  /* Repeat функція */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* Автоматичні розміри */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+                </code></pre>
+
+                <h3>Grid Areas</h3>
+                <p>Можна створювати іменовані області:</p>
+
+                <pre><code>
+.layout {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+  grid-template-rows: 80px 1fr 60px;
+  grid-template-columns: 250px 1fr;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+                </code></pre>
+
+                <h2>Властивості Grid Items</h2>
+                <h3>Позиціонування елементів</h3>
+                <pre><code>
+.grid-item {
+  /* Розташування по лініях */
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+
+  /* Скорочений запис */
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+
+  /* Ще коротший запис */
+  grid-area: 2 / 1 / 4 / 3; /* row-start / col-start / row-end / col-end */
+}
+                </code></pre>
+
+                <h2>Вирівнювання в Grid</h2>
+                <h3>Вирівнювання контенту</h3>
+                <pre><code>
+.grid-container {
+  /* Вирівнювання всіх елементів */
+  justify-items: center;  /* по горизонталі */
+  align-items: center;    /* по вертикалі */
+  place-items: center;    /* скорочення для обох */
+
+  /* Вирівнювання всієї сітки в контейнері */
+  justify-content: center;
+  align-content: center;
+  place-content: center;
+}
+
+.grid-item {
+  /* Вирівнювання окремого елемента */
+  justify-self: start;
+  align-self: end;
+  place-self: start end;
+}
+                </code></pre>
+
+                <h2>Адаптивні макети з Grid</h2>
+                <h3>Auto-fit та Auto-fill</h3>
+                <pre><code>
+.responsive-grid {
+  display: grid;
+
+  /* Автоматично підлаштовується під розмір контейнера */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Різниця між auto-fit та auto-fill:
+   auto-fit - розтягує елементи на всю ширину
+   auto-fill - залишає порожні колонки */
+                </code></pre>
+
+                <h3>Медіа-запити з Grid</h3>
+                <pre><code>
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: 
+      "sidebar content"
+      "sidebar content";
+  }
+}
+
+@media (min-width: 1200px) {
+  .layout {
+    grid-template-columns: 250px 1fr 300px;
+    grid-template-areas: 
+      "sidebar content ads"
+      "sidebar content ads";
+  }
+}
+                </code></pre>
+
+                <h2>Практичні приклади</h2>
+                <h3>Карткова розкладка</h3>
+                <pre><code>
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+                </code></pre>
+
+                <h3>Складний макет дашборда</h3>
+                <pre><code>
+.dashboard {
+  display: grid;
+  grid-template-columns: 250px 1fr 300px;
+  grid-template-rows: 70px 1fr 50px;
+  grid-template-areas: 
+    "nav header header"
+    "nav main sidebar"
+    "nav footer footer";
+  height: 100vh;
+  gap: 1px;
+  background: #e0e0e0;
+}
+                </code></pre>
+
+                <h2>Поради для ефективного використання</h2>
+                <ol>
+                    <li><strong>Використовуйте fr units</strong> - вони більш гнучкі за відсотки</li>
+                    <li><strong>minmax() для адаптивності</strong> - дозволяє встановити мінімальний та максимальний розміри</li>
+                    <li><strong>Іменовані лінії</strong> - полегшують розуміння коду</li>
+                    <li><strong>Grid DevTools</strong> - використовуйте інструменти розробника для візуалізації</li>
+                </ol>
+
+                <h2>Сумісність з браузерами</h2>
+                <p>CSS Grid підтримується всіма сучасними браузерами. Для старих версій IE можна використовувати autoprefixer або fallback стилі.</p>
+
+                <h2>Висновки</h2>
+                <p>CSS Grid революціонізував спосіб створення веб-макетів. Він дає повний контроль над розташуванням елементів і значно спрощує створення адаптивних дизайнів. Оволодіння Grid — це інвестиція в майбутнє веб-розробки.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="../blog.html" class="back-to-blog">← Повернутися до блогу</a>
+                <div class="article-share">
+                    <span>Поділитися:</span>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../../index.html">Головна</a></li>
+                        <li><a href="../about.html">Про мене</a></li>
+                        <li><a href="../projects.html">Проєкти</a></li>
+                        <li><a href="../contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 корисних TypeScript тріків для розробників - Олексій Коваленко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="../about.html" class="nav-link">Про мене</a></li>
+                    <li><a href="../projects.html" class="nav-link">Проєкти</a></li>
+                    <li><a href="../contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="../blog.html" class="nav-link active">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta">
+                <span class="article-category">TypeScript</span>
+                <span class="article-date">25 серпня 2025</span>
+                <span class="article-read-time">6 хв читання</span>
+            </div>
+            <h1 class="article-title">10 корисних TypeScript тріків для розробників</h1>
+            <p class="article-subtitle">Колекція корисних TypeScript функцій та патернів, які допоможуть писати більш безпечний та читабельний код</p>
+            <div class="article-tags">
+                <span class="tag">TypeScript</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Tips</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="container">
+            <div class="article-body">
+                <img src="../../img/blog4.jpg" alt="TypeScript Tips" class="article-image">
+
+                <h2>Вступ</h2>
+                <p>TypeScript надає потужні інструменти для типізації JavaScript коду. У цій статті розглянемо 10 корисних тріків, які допоможуть вам писати більш ефективний та безпечний код.</p>
+
+                <h2>1. Utility Types для трансформації типів</h2>
+                <p>TypeScript надає вбудовані utility types для маніпуляції з типами:</p>
+
+                <pre><code>
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
+
+// Робимо всі поля опціональними
+type PartialUser = Partial&lt;User&gt;;
+
+// Вибираємо тільки потрібні поля
+type PublicUser = Pick&lt;User, 'id' | 'name' | 'email'&gt;;
+
+// Виключаємо небажані поля
+type UserWithoutPassword = Omit&lt;User, 'password'&gt;;
+
+// Робимо всі поля обов'язковими
+type RequiredUser = Required&lt;PartialUser&gt;;
+                </code></pre>
+
+                <h2>2. Conditional Types</h2>
+                <p>Створюйте типи, які залежать від умов:</p>
+
+                <pre><code>
+type ApiResponse&lt;T&gt; = T extends string 
+  ? { message: T } 
+  : T extends number 
+    ? { count: T }
+    : { data: T };
+
+type StringResponse = ApiResponse&lt;string&gt;; // { message: string }
+type NumberResponse = ApiResponse&lt;number&gt;; // { count: number }
+type ObjectResponse = ApiResponse&lt;User&gt;;   // { data: User }
+                </code></pre>
+
+                <h2>3. Template Literal Types</h2>
+                <p>Створюйте типи на основі шаблонних рядків:</p>
+
+                <pre><code>
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+type ApiEndpoint = 'users' | 'posts' | 'comments';
+
+type ApiUrl = `/${ApiEndpoint}`;
+type ApiAction = `${HttpMethod} ${ApiUrl}`;
+
+// Результат: "GET /users" | "POST /users" | "PUT /users" | ...
+
+type EventName&lt;T extends string&gt; = `on${Capitalize&lt;T&gt;}`;
+type UserEvents = EventName&lt;'create' | 'update' | 'delete'&gt;;
+// Результат: "onCreate" | "onUpdate" | "onDelete"
+                </code></pre>
+
+                <h2>4. Mapped Types для динамічного створення типів</h2>
+                <pre><code>
+type EventHandlers&lt;T&gt; = {
+  [K in keyof T as `on${Capitalize&lt;string & K&gt;}`]: (value: T[K]) => void;
+};
+
+interface FormData {
+  name: string;
+  age: number;
+  email: string;
+}
+
+type FormHandlers = EventHandlers&lt;FormData&gt;;
+// Результат:
+// {
+//   onName: (value: string) => void;
+//   onAge: (value: number) => void;
+//   onEmail: (value: string) => void;
+// }
+                </code></pre>
+
+                <h2>5. Type Guards для runtime перевірок</h2>
+                <pre><code>
+interface Cat {
+  type: 'cat';
+  meow: () => void;
+}
+
+interface Dog {
+  type: 'dog';
+  bark: () => void;
+}
+
+type Animal = Cat | Dog;
+
+// Type guard функція
+function isCat(animal: Animal): animal is Cat {
+  return animal.type === 'cat';
+}
+
+function handleAnimal(animal: Animal) {
+  if (isCat(animal)) {
+    animal.meow(); // TypeScript знає, що це Cat
+  } else {
+    animal.bark(); // TypeScript знає, що це Dog
+  }
+}
+                </code></pre>
+
+                <h2>6. Assertion Functions для валідації</h2>
+                <pre><code>
+function assertIsNumber(value: unknown): asserts value is number {
+  if (typeof value !== 'number') {
+    throw new Error('Expected number');
+  }
+}
+
+function processValue(value: unknown) {
+  assertIsNumber(value);
+  // Після assertion TypeScript знає, що value це number
+  return value.toFixed(2);
+}
+                </code></pre>
+
+                <h2>7. Recursive Types для складних структур</h2>
+                <pre><code>
+type JsonValue = 
+  | string 
+  | number 
+  | boolean 
+  | null 
+  | JsonObject 
+  | JsonArray;
+
+interface JsonObject {
+  [key: string]: JsonValue;
+}
+
+interface JsonArray extends Array&lt;JsonValue&gt; {}
+
+// Тепер можна типізувати будь-які JSON дані
+const data: JsonValue = {
+  name: "John",
+  age: 30,
+  hobbies: ["reading", "coding"],
+  address: {
+    street: "Main St",
+    city: "NYC"
+  }
+};
+                </code></pre>
+
+                <h2>8. Index Signatures з Template Literals</h2>
+                <pre><code>
+type CssProperties = {
+  [K in `--${string}`]: string;
+} & {
+  [K in keyof CSSStyleDeclaration]?: string;
+};
+
+const styles: CssProperties = {
+  '--primary-color': '#007bff',
+  '--secondary-color': '#6c757d',
+  color: 'red',
+  fontSize: '16px'
+};
+                </code></pre>
+
+                <h2>9. Branded Types для типової безпеки</h2>
+                <pre><code>
+// Створюємо "брендовані" типи
+type UserId = number & { readonly brand: unique symbol };
+type PostId = number & { readonly brand: unique symbol };
+
+function createUserId(id: number): UserId {
+  return id as UserId;
+}
+
+function createPostId(id: number): PostId {
+  return id as PostId;
+}
+
+function getUser(id: UserId): User {
+  // ...
+}
+
+function getPost(id: PostId): Post {
+  // ...
+}
+
+const userId = createUserId(123);
+const postId = createPostId(456);
+
+getUser(userId);  // ✅ Працює
+getPost(postId);  // ✅ Працює
+getUser(postId);  // ❌ Помилка компіляції!
+                </code></pre>
+
+                <h2>10. Advanced Function Overloads</h2>
+                <pre><code>
+interface CreateElementOptions {
+  tag: string;
+  props?: Record&lt;string, any&gt;;
+  children?: string | Element[];
+}
+
+// Overloads для різних сигнатур
+function createElement(tag: 'input'): HTMLInputElement;
+function createElement(tag: 'div'): HTMLDivElement;
+function createElement(tag: 'button'): HTMLButtonElement;
+function createElement(options: CreateElementOptions): HTMLElement;
+function createElement(
+  tagOrOptions: string | CreateElementOptions
+): HTMLElement {
+  if (typeof tagOrOptions === 'string') {
+    return document.createElement(tagOrOptions);
+  }
+
+  const element = document.createElement(tagOrOptions.tag);
+
+  if (tagOrOptions.props) {
+    Object.assign(element, tagOrOptions.props);
+  }
+
+  if (tagOrOptions.children) {
+    if (typeof tagOrOptions.children === 'string') {
+      element.textContent = tagOrOptions.children;
+    } else {
+      element.append(...tagOrOptions.children);
+    }
+  }
+
+  return element;
+}
+
+// Використання з автодоповненням типів
+const input = createElement('input'); // HTMLInputElement
+const div = createElement('div');     // HTMLDivElement
+const custom = createElement({        // HTMLElement
+  tag: 'span',
+  props: { className: 'highlight' },
+  children: 'Hello World'
+});
+                </code></pre>
+
+                <h2>Бонус: Налаштування tsconfig.json</h2>
+                <pre><code>
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false
+  }
+}
+                </code></pre>
+
+                <h2>Поради для ефективного використання</h2>
+                <ol>
+                    <li><strong>Використовуйте const assertions</strong> - для точнішої типізації</li>
+                    <li><strong>Уникайте any</strong> - використовуйте unknown замість нього</li>
+                    <li><strong>Створюйте utility types</strong> - для багаторазового використання</li>
+                    <li><strong>Документуйте складні типи</strong> - додавайте коментарі</li>
+                    <li><strong>Використовуйте строгі налаштування</strong> - для кращої безпеки типів</li>
+                </ol>
+
+                <h2>Висновки</h2>
+                <p>TypeScript надає потужні можливості для створення типобезпечного коду. Ці тріки допоможуть вам писати більш надійні та підтримувані застосунки. Пам'ятайте: гарна типізація — це інвестиція в майбутнє вашого проекту.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="../blog.html" class="back-to-blog">← Повернутися до блогу</a>
+                <div class="article-share">
+                    <span>Поділитися:</span>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../../index.html">Головна</a></li>
+                        <li><a href="../about.html">Про мене</a></li>
+                        <li><a href="../projects.html">Проєкти</a></li>
+                        <li><a href="../contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>

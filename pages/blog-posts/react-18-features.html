@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React 18: Нові можливості та покращення - Олексій Коваленко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">Олексій К.</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Головна</a></li>
+                    <li><a href="../about.html" class="nav-link">Про мене</a></li>
+                    <li><a href="../projects.html" class="nav-link">Проєкти</a></li>
+                    <li><a href="../contact.html" class="nav-link">Контакти</a></li>
+                    <li><a href="../blog.html" class="nav-link active">Блог</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-meta">
+                <span class="article-category">React</span>
+                <span class="article-date">15 вересня 2025</span>
+                <span class="article-read-time">5 хв читання</span>
+            </div>
+            <h1 class="article-title">React 18: Нові можливості та покращення</h1>
+            <p class="article-subtitle">Огляд нових функцій React 18, включаючи Concurrent Features, Suspense покращення та нову архітектуру рендерингу</p>
+            <div class="article-tags">
+                <span class="tag">React</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Frontend</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="container">
+            <div class="article-body">
+                <img src="../../img/blog1.jpg" alt="React 18" class="article-image">
+
+                <h2>Вступ до React 18</h2>
+                <p>React 18 представляє революційні зміни у способі роботи з React-додатками. Нова версія фокусується на покращенні користувальського досвіду та продуктивності застосунків.</p>
+
+                <h2>Concurrent Features</h2>
+                <p>Одна з найбільших новинок React 18 — це Concurrent Features. Ця функціональність дозволяє React працювати над кількома завданнями одночасно та визначати пріоритети оновлень.</p>
+
+                <h3>Automatic Batching</h3>
+                <p>React 18 автоматично групує оновлення стану для кращої продуктивності. Це означає, що кілька викликів setState будуть оброблені в одній операції:</p>
+
+                <pre><code>
+// До React 18
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React виконає два рендери
+}, 1000);
+
+// React 18
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React виконає лише один рендер
+}, 1000);
+                </code></pre>
+
+                <h2>Suspense для Server-Side Rendering</h2>
+                <p>Suspense тепер працює з SSR, дозволяючи частинам вашого додатку завантажуватися незалежно одна від одної.</p>
+
+                <h2>Нові хуки</h2>
+                <h3>useId</h3>
+                <p>Генерує унікальні ID для accessibility атрибутів:</p>
+                <pre><code>
+function Checkbox() {
+  const id = useId();
+  return (
+    &lt;div&gt;
+      &lt;label htmlFor={id}&gt;Вибрати опцію&lt;/label&gt;
+      &lt;input id={id} type="checkbox" /&gt;
+    &lt;/div&gt;
+  );
+}
+                </code></pre>
+
+                <h3>useTransition</h3>
+                <p>Дозволяє позначити оновлення як не критичні:</p>
+                <pre><code>
+function SearchBox() {
+  const [isPending, startTransition] = useTransition();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  function handleChange(e) {
+    startTransition(() => {
+      setSearchTerm(e.target.value);
+    });
+  }
+
+  return (
+    &lt;input onChange={handleChange} /&gt;
+  );
+}
+                </code></pre>
+
+                <h2>Міграція на React 18</h2>
+                <p>Для міграції на React 18 потрібно:</p>
+                <ol>
+                    <li>Оновити пакети React та ReactDOM</li>
+                    <li>Замінити ReactDOM.render на createRoot</li>
+                    <li>Перевірити сумісність з третіми пакетами</li>
+                </ol>
+
+                <pre><code>
+// Старий спосіб
+import ReactDOM from 'react-dom';
+ReactDOM.render(&lt;App /&gt;, container);
+
+// React 18
+import { createRoot } from 'react-dom/client';
+const root = createRoot(container);
+root.render(&lt;App /&gt;);
+                </code></pre>
+
+                <h2>Висновки</h2>
+                <p>React 18 приносить значні покращення в продуктивності та користувальському досвіді. Concurrent Features, покращений Suspense та нові хуки роблять розробку React-додатків ще більш ефективною.</p>
+            </div>
+
+            <div class="article-navigation">
+                <a href="../blog.html" class="back-to-blog">← Повернутися до блогу</a>
+                <div class="article-share">
+                    <span>Поділитися:</span>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Олексій Коваленко</h3>
+                    <p>Full-Stack веб-розробник</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="../../index.html">Головна</a></li>
+                        <li><a href="../about.html">Про мене</a></li>
+                        <li><a href="../projects.html">Проєкти</a></li>
+                        <li><a href="../contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Соціальні мережі</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Telegram">Telegram</a>
+                        <a href="#" aria-label="Email">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Олексій Коваленко. Всі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>
