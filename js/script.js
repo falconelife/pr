@@ -1,69 +1,77 @@
-
-// Темна/світла тема
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-if (themeToggle) {
-    // Завантажуємо збережену тему
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        themeToggle.querySelector('.theme-icon').textContent = '☀️';
+// Theme toggle with localStorage
+(function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if(stored) root.setAttribute('data-theme', stored);
+    else {
+        const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if(prefers) root.setAttribute('data-theme','dark');
     }
-
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
-
-        // Зберігаємо тему
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-        // Змінюємо іконку
-        themeToggle.querySelector('.theme-icon').textContent = isDark ? '☀️' : '🌙';
+    function updateIcon(){
+        const icon = btn && btn.querySelector('.theme-icon');
+        if(!icon) return;
+        icon.textContent = (document.documentElement.getAttribute('data-theme') === 'dark') ? '☀️' : '🌙';
+    }
+    updateIcon();
+    btn && btn.addEventListener('click', ()=>{
+        const cur = document.documentElement.getAttribute('data-theme');
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon();
     });
-}
+})();
 
-// Мобільне меню
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const nav = document.querySelector('.nav');
-
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        nav.classList.toggle('nav-open');
-        mobileMenuBtn.classList.toggle('active');
+// Mobile menu toggle
+(function(){
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const header = document.querySelector('.header');
+    if(!mobileBtn || !header) return;
+    mobileBtn.addEventListener('click', ()=>{
+        header.classList.toggle('expanded');
     });
-}
+})();
 
-// Плавна прокрутка для посилань
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Simple contact form validation
+(function(){
+    const form = document.querySelector('form.contact-form');
+    if(!form) return;
+    form.addEventListener('submit', (e)=>{
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+        const name = form.querySelector('input[name="name"]');
+        const email = form.querySelector('input[name="email"]');
+        const msg = form.querySelector('textarea[name="message"]');
+        let ok=true;
+        [name,email,msg].forEach(el=>{
+            if(!el.value.trim()){
+                el.style.outline = '2px solid rgba(220,38,38,0.25)';
+                ok=false;
+            } else {
+                el.style.outline = 'none';
+            }
+        });
+        // simple email regex
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(email && !re.test(email.value.trim())){ email.style.outline='2px solid rgba(220,38,38,0.25)'; ok=false;}
+        if(!ok){
+            alert('Будь ласка, заповніть правильно всі поля форми.');
+            return;
         }
+        // simulate submit
+        alert('Дякую! Повідомлення відправлено (псевдо).');
+        form.reset();
     });
-});
+})();
 
-// Анімація появи елементів при прокрутці
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Спостерігаємо за елементами з класом animate
-document.querySelectorAll('.blog-post, .project-card, .skill-card').forEach(el => {
-    observer.observe(el);
-});
+// Blog modal (if exists)
+function openBlogPost(id){
+    const modal = document.getElementById('blogModal');
+    if(!modal) return;
+    modal.style.display='block';
+}
+function closeBlogPost(){
+    const modal = document.getElementById('blogModal');
+    if(!modal) return;
+    modal.style.display='none';
+}
